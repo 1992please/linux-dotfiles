@@ -29,3 +29,4 @@ alias gemini='npx -y @google/gemini-cli'
 
 # config files backup (bare git repo)
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config-add='config add ~/.bashrc ~/.config/nvim'
