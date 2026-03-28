@@ -1,0 +1,14 @@
+nvidia-open-kernel-dkms
+nvidia-driver
+linux-headers-generic
+i3
+xorg
+lightdm
+alacritty
+fonts-jetbrains-mono
+firefox-esr
+fastfetch
+pipewire-audio
+pavucontrol
+alsa-tools-gui
+git
