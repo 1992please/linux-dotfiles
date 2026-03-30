@@ -1,6 +1,3 @@
-nvidia-open-kernel-dkms
-nvidia-driver
-linux-headers-generic
 i3
 xorg
 lightdm
