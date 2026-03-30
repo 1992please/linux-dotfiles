@@ -114,7 +114,7 @@ fi
 
 ################## Aliases ###################
 # config files backup (bare git repo)
-alias config-git='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ################## Functions ###################
 # pkg utilties
