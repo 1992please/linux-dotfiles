@@ -9,3 +9,4 @@ pipewire-audio
 pavucontrol
 alsa-tools-gui
 git
+flameshot

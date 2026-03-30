@@ -140,7 +140,7 @@ pkg() {
                 done
             }
             ;;
-        show-installed)
+	list)
             [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."
             ;;
         *)
