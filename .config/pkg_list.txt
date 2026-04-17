@@ -10,3 +10,7 @@ pavucontrol
 alsa-tools-gui
 git
 flameshot
+thunar
+lxappearance
+unzip
+zip
