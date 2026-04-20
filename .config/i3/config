@@ -185,18 +185,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# --- Tokyo Night Color Palette ---
-# set $bg           #1a1b26
-# set $fg           #c0caf5
-# set $black        #414868
-# set $red          #f7768e
-# set $blue         #7aa2f7
-# --- One Dark Color Palette ---
-set $bg           #282c34
-set $fg           #abb2bf
-set $black        #5c6370
-set $red          #e06c75
-set $blue         #61afef
+# One-Dark Tokyo-Night Gruvbox-Material Catppuccin-Mocha
+#282c34    #1a1b26     #1d2021          #1e1e2e
+#abb2bf    #c0caf5     #d4be98          #cdd6f4
+#5c6370    #414868     #5a524c          #45475a
+#e06c75    #f7768e     #ea6962          #f38ba8
+#61afef    #7aa2f7     #7daea3          #89b4fa
+set $bg           #1d2021
+set $fg           #d4be98
+set $black        #5a524c
+set $red          #ea6962
+set $blue         #7daea3
 # --- Window Borders ---
 # class                 border  backgr. text    indicator child_border
 client.focused          $blue   $blue   $bg     $blue     $blue

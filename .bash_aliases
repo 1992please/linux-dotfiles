@@ -1,3 +1,7 @@
+# Set default terminal and editor for i3-sensible-terminal
+export TERMINAL="alacritty"
+export EDITOR="nvim"
+export VISUAL="nvim"
 ################## Aliases ###################
 # config files backup (bare git repo)
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
