@@ -12,9 +12,9 @@ On a new machine, run these commands to restore all settings:
    git clone --bare https://github.com/1992please/linux-dotfiles.git $HOME/.dotfiles
 
 3. **Checkout the files:**
-   config checkout
+   dotfiles checkout
 
 4. **Set the config for this machine:**
-   config config --local status.showUntrackedFiles no
+   dotfiles config --local status.showUntrackedFiles no
 
 *Note: If checkout fails due to existing default files, move them to a backup folder first.*
