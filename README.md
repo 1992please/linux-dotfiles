@@ -9,7 +9,7 @@ On a new machine, run these commands to restore all settings:
    alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 2. **Clone the repo:**
-   git clone --bare <YOUR_GITHUB_REPO_URL> $HOME/.dotfiles
+   git clone --bare https://github.com/1992please/linux-dotfiles.git $HOME/.dotfiles
 
 3. **Checkout the files:**
    config checkout
