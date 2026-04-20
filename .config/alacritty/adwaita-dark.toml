@@ -1,0 +1,23 @@
+[colors.primary]
+background = "#1e1e1e" # Adwaita terminal background
+foreground = "#deddda" # Adwaita off-white text
+
+[colors.normal]
+black   = "#3d3846"
+red     = "#c01c28"
+green   = "#2ec27e"
+yellow  = "#f5c211"
+blue    = "#1e78e4"
+magenta = "#9141ac"
+cyan    = "#2aa1b3"
+white   = "#c0bfbc"
+
+[colors.bright]
+black   = "#5e5c64"
+red     = "#f66151"
+green   = "#57e389"
+yellow  = "#f9f06b"
+blue    = "#62a0ea"
+magenta = "#c061cb"
+cyan    = "#53cbdc"
+white   = "#ffffff"

@@ -1,6 +1,6 @@
 ################## Aliases ###################
 # config files backup (bare git repo)
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 ################## Functions ###################
 # pkg utilties
@@ -26,11 +26,19 @@ pkg() {
                 done
             }
             ;;
+        purge)
+            shift
+            sudo apt purge --autoremove "$@" && {
+                for pkg in "$@"; do
+                    sed -i "/^$pkg$/d" "$LOG_FILE"
+                done
+            }
+            ;;
 	list)
             [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."
             ;;
         *)
-            echo "Usage: pkg {install|remove|show-installed} [package...]"
+            echo "Usage: pkg {install|remove|purge|show-installed} [package...]"
             ;;
     esac
 }

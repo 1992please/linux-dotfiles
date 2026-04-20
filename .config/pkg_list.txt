@@ -3,7 +3,6 @@ xorg
 lightdm
 alacritty
 fonts-jetbrains-mono
-firefox-esr
 fastfetch
 pipewire-audio
 pavucontrol
@@ -14,3 +13,7 @@ thunar
 lxappearance
 unzip
 zip
+google-chrome-stable
+ncdu
+nvim
+papirus-icon-theme
