@@ -1,3 +1,6 @@
+# Custom Desaturated PS1 Prompt
+PS1='\[\e[38;5;109m\]\u\[\e[38;5;243m\]@\[\e[38;5;208m\]\h\[\e[38;5;243m\]:\[\e[38;5;142m\]\w\[\e[0m\]\$ '
+
 # Set default terminal and editor for i3-sensible-terminal
 export TERMINAL="alacritty"
 export EDITOR="nvim"
