@@ -2,7 +2,6 @@ i3
 xorg
 lightdm
 alacritty
-fonts-jetbrains-mono
 fastfetch
 pipewire-audio
 pavucontrol
@@ -18,3 +17,17 @@ ncdu
 nvim
 papirus-icon-theme
 playerctl
+fonts-noto-core
+fonts-noto-color-emoji
+build-essential
+ninja-build
+gettext
+cmake
+curl
+neovim
+ripgrep
+xclip
+make
+gcc
+fd-find
+tree-sitter-cli

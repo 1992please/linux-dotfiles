@@ -19,7 +19,7 @@ pkg() {
     case "$1" in
         install)
             shift
-            sudo apt install "$@" && {
+            sudo apt-get install "$@" && {
                 for pkg in "$@"; do
                     grep -qxF "$pkg" "$LOG_FILE" || echo "$pkg" >> "$LOG_FILE"
                 done
@@ -27,7 +27,7 @@ pkg() {
             ;;
         remove)
             shift
-            sudo apt remove --purge "$@" && {
+            sudo apt-get remove --purge "$@" && {
                 for pkg in "$@"; do
                     sed -i "/^$pkg$/d" "$LOG_FILE"
                 done
@@ -35,7 +35,7 @@ pkg() {
             ;;
         purge)
             shift
-            sudo apt purge --autoremove "$@" && {
+            sudo apt-get purge --autoremove "$@" && {
                 for pkg in "$@"; do
                     sed -i "/^$pkg$/d" "$LOG_FILE"
                 done
