@@ -1,4 +1,4 @@
-# My Fedora Dotfiles (Bare Repo Method)
+# My Dotfiles (Bare Repo Method)
 
 Managed with a bare git repository. No symlinks required.
 
