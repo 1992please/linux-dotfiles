@@ -31,3 +31,4 @@ make
 gcc
 fd-find
 tree-sitter-cli
+localsend
