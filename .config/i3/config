@@ -10,14 +10,18 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $font JetBrainsMono Nerd Font
+set $font_size 12
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-font pango:JetBrainsMono Nerd Font 10
+set $bg           #1d2021
+set $fg           #d4be98
+set $black        #5a524c
+set $red          #ea6962
+set $blue         #7daea3
+set $green        #a9b665
+set $yellow       #d8a657
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:$font $font_size
 
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
@@ -34,12 +38,17 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id nm-applet
 
+# Launch Polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+
+# Sets the background to Tokyo Night (Night variant)
+exec --no-startup-id xsetroot -solid "$bg"
+
 # Use wpctl to adjust volume in PipeWire.
-set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 bindsym XF86AudioLowerVolume exec --no-startup-id wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 bindsym XF86AudioMute exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
-bindsym $mod+shift+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+bindsym $mod+shift+m exec --no-startup-id wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle && polybar-msg action "#alsa-mic.hook.0"
 
 bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
 bindsym XF86AudioNext exec --no-startup-id playerctl next
@@ -59,7 +68,7 @@ bindsym $mod+shift+Return exec thunar
 # kill focused window
 bindsym $mod+q kill
 # start browser
-bindsym $mod+b exec --no-startup-id google-chrome --force-device-scale-factor=1.2
+bindsym $mod+b exec --no-startup-id google-chrome 
 # start dmenu (a program launcher)
 # Start flameshot GUI with the Print Screen key
 bindsym Print exec --no-startup-id flameshot gui
@@ -189,40 +198,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# One-Dark Tokyo-Night Gruvbox-Material Catppuccin-Mocha
-#282c34    #1a1b26     #1d2021          #1e1e2e
-#abb2bf    #c0caf5     #d4be98          #cdd6f4
-#5c6370    #414868     #5a524c          #45475a
-#e06c75    #f7768e     #ea6962          #f38ba8
-#61afef    #7aa2f7     #7daea3          #89b4fa
-set $bg           #1d2021
-set $fg           #d4be98
-set $black        #5a524c
-set $red          #ea6962
-set $blue         #7daea3
 # --- Window Borders ---
 # class                 border  backgr. text    indicator child_border
 client.focused          $blue   $blue   $bg     $blue     $blue
 client.focused_inactive $black  $black  $fg     $black    $black
 client.unfocused        $bg     $bg     $fg     $bg       $bg
 client.urgent           $red    $red    $bg     $red      $red
-
-# --- Status Bar ---
-bar {
-        status_command i3status
-        position top
-        colors {
-                background $bg
-                statusline $fg
-                separator  $black
-
-                #                  border  backgr. text
-                focused_workspace  $blue   $blue   $bg
-                active_workspace   $black  $black  $fg
-                inactive_workspace $bg     $bg     $fg
-                urgent_workspace   $red    $red    $bg
-        }
-}
 
 # Disable window titlebars completely. Rely on borders to show focus.
 default_border pixel 2
@@ -233,7 +214,26 @@ default_floating_border pixel 2
 # gaps outer 0
 # smart_gaps on
 
-# Sets the background to Tokyo Night (Night variant)
-exec --no-startup-id xsetroot -solid "$bg"
+bindsym $mod+d exec --no-startup-id dmenu_run -fn '$font:size=$font_size' -nb '$bg' -nf '$fg' -sb '$blue' -sf '$bg'
 
-bindsym $mod+d exec --no-startup-id dmenu_run -fn 'JetBrainsMono Nerd Font:size=11' -nb '$bg' -nf '$fg' -sb '$blue' -sf '$bg'
+# --- Scratchpad ---
+# Make the currently focused window a scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the first scratchpad window (or hide it if it's currently showing)
+bindsym $mod+minus scratchpad show
+
+# --- Auto-Floating Rules ---
+# Float audio control
+for_window [class="Pavucontrol"] floating enable
+
+# Float calculators
+for_window [class="Galculator"] floating enable
+for_window [class="Gnome-calculator"] floating enable
+
+# Float Bluetooth and Network manager pop-ups
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Nm-connection-editor"] floating enable
+
+# Float Thunar file transfer dialogs (so the main window tiles, but the progress bar floats)
+for_window [class="Thunar" title="File Operation Progress"] floating enable
