@@ -2,7 +2,7 @@ set $mod Mod4
 set $font JetBrainsMono Nerd Font
 set $font_size 12
 
-set $bg           #1d2021
+set $bg           #282828
 set $fg           #d4be98
 set $black        #5a524c
 set $red          #ea6962
