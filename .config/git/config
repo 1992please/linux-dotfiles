@@ -1,0 +1,16 @@
+[user]
+	email = eng.nadernour@gmail.com
+	name = Nader Hegazy
+[diff]
+	tool = meld
+[merge]
+	tool = meld
+	conflictstyle = diff3
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false
+[safe]
+	directory = /mnt/work/nader_data/development/*
+[core]
+	autocrlf = input

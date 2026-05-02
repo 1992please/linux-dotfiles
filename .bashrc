@@ -21,10 +21,10 @@ fi
 # EXPORTS
 #######################################################
 
-# Set default terminal and editor for i3-sensible-terminal
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="nvim"
+export MANPAGER="nvim +Man!"
 
 # Disable the bell
 if [[ $iatest -gt 0 ]]; then bind "set bell-style none"; fi
@@ -81,10 +81,6 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # open my quick note file
 alias note='nvim ~/Documents/notes.md'
 
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
@@ -107,14 +103,14 @@ alias reboot='systemctl reboot'
 #######################################################
 # pkg utilties
 pkg() {
-    local LOG_FILE="$HOME/.config/pkg_list.txt"
+    local LOG_FILE="$HOME/.config/packages.md"
     mkdir -p "$(dirname "$LOG_FILE")"
     touch "$LOG_FILE"
 
     case "$1" in
         install)
             shift
-            sudo apt-get install "$@" && {
+            sudo apt install "$@" && {
                 for pkg in "$@"; do
                     grep -qxF "$pkg" "$LOG_FILE" || echo "$pkg" >> "$LOG_FILE"
                 done
@@ -122,7 +118,7 @@ pkg() {
             ;;
         remove)
             shift
-            sudo apt-get remove --purge "$@" && {
+            sudo apt remove --purge "$@" && {
                 for pkg in "$@"; do
                     sed -i "/^$pkg$/d" "$LOG_FILE"
                 done
@@ -130,7 +126,7 @@ pkg() {
             ;;
         purge)
             shift
-            sudo apt-get purge --autoremove "$@" && {
+            sudo apt purge --autoremove "$@" && {
                 for pkg in "$@"; do
                     sed -i "/^$pkg$/d" "$LOG_FILE"
                 done
