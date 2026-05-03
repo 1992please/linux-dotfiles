@@ -98,6 +98,8 @@ alias topcpu='/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
 
+# Temp aliases
+alias cd-dev='cd /mnt/work/nader_data/development/'
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
