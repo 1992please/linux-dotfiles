@@ -3,3 +3,5 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-c>', '<cmd>nohlsearch<CR>')
 
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+-- Format document with LSP
+vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format() end, { desc = "Format document" })

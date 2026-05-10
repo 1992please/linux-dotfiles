@@ -54,6 +54,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+# Homebrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
+
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
 if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
@@ -84,19 +87,36 @@ alias note='nvim ~/Documents/notes.md'
 # cd into the old directory
 alias bd='cd "$OLDPWD"'
 
-# listing command
+# modified commands
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='trash -v'
 alias ls='ls -aFh --color=always' # add colors and file type extensions
+
+# Alias's for archives
+alias mktar='tar -cvf'
+alias mkbz2='tar -cvjf'
+alias mkgz='tar -cvzf'
+alias untar='tar -xvf'
+alias unbz2='tar -xvjf'
+alias ungz='tar -xvzf'
 
 # Search command line history
 alias h='history | grep '
 
 # Search running processes
 alias p='ps aux | grep '
-alias topcpu='/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
+alias topp='/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 
 # Shutdown/Restart
 alias poweroff='systemctl poweroff'
 alias reboot='systemctl reboot'
+
+# Tools 
+alias thunar='thunar . & disown'
+
+# General aliases
+alias clean-nvim='rm -rf ~/{.cache/nvim/,.local/state/nvim/,.local/share/nvim/}'
 
 # Temp aliases
 alias cd-dev='cd /mnt/work/nader_data/development/'

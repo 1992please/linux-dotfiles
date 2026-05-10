@@ -1,9 +1,6 @@
-return {
-  'sainnhe/gruvbox-material',
-  priority = 1000, -- Make sure to load this before all the other start plugins.
-  config = function()
-    vim.g.gruvbox_material_background="medium"
-    vim.g.gruvbox_material_forground="material"
-    vim.cmd.colorscheme "gruvbox-material"
-  end
-}
+return function()
+  vim.pack.add { 'https://github.com/sainnhe/gruvbox-material' }
+  vim.g.gruvbox_material_background="medium"
+  vim.g.gruvbox_material_forground="material"
+  vim.cmd.colorscheme "gruvbox-material"
+end

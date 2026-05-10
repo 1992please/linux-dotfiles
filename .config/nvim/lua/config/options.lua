@@ -1,3 +1,5 @@
+-- Enable faster startup by caching compiled Lua modules
+vim.loader.enable()
 -- Set <space> as the leader key
 -- Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
@@ -12,6 +14,10 @@ vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 vim.o.relativenumber = true
 
+-- Auto completion
+vim.opt.autocomplete = true
+vim.opt.completeopt = 'popup'
+
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -22,8 +28,24 @@ vim.o.showmode = false
 --  Schedule the setting after `UiEnter` because it can increase startup-time.
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
--- Enable break indent
-vim.o.breakindent = true
+-- Default indentation
+vim.opt.expandtab = true      -- Use spaces instead of tabs
+vim.opt.tabstop = 2           -- Number of spaces a tab counts for
+vim.opt.shiftwidth = 2        -- Size of an indent
+vim.opt.softtabstop = 2       -- Makes backspace treat spaces like tabs
+
+-- Smart indent behavior
+vim.opt.smartindent = true    -- Auto-indent new lines based on syntax
+vim.opt.autoindent = true     -- Copy indent from current line on new line
+
+-- Make line breaks more intuitive
+vim.opt.breakindent = true
+
+-- Optional: Filetype-specific defaults (useful without guess-indent)
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "go",
+--   command = "setlocal noexpandtab tabstop=4 shiftwidth=4",
+-- })
 
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = false
@@ -78,7 +100,18 @@ vim.diagnostic.config {
   virtual_lines = false, -- Text shows up underneath the line, with virtual lines
 
   -- Auto open the float, so you can easily read the errors when jumping with `[d` and `]d`
-  jump = { float = true },
+  jump = {
+    on_jump = function (diagnostic, bufnr)
+     if not diagnostic then return end
+
+      vim.diagnostic.show(
+        diagnostic.namespace,
+        bufnr,
+        { diagnostic },
+        { virtual_lines = { current_line = true }, virtual_text = false }
+      )
+    end
+  },
 }
 
 -- [[ Basic Autocommands ]]

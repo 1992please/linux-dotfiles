@@ -37,10 +37,15 @@ python3-docx
 # ========================================================
 # Neovim
 # ========================================================
-xclip
-fd-find
-tree-sitter-cli
+neovim
 ripgrep
+xclip
+tree-sitter-cli
+fd-find
+neocmakelsp
+clangd
+lua-language-server
+vscode-langservers-extracted
 # ========================================================
 # Quality of life
 # ========================================================
@@ -65,3 +70,5 @@ gcc
 # Misc
 # ========================================================
 nsxiv
+code
+trash-cli
