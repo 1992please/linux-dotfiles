@@ -14,10 +14,6 @@ vim.o.number = true
 -- You can also add relative line numbers, to help with jumping.
 vim.o.relativenumber = true
 
--- Auto completion
-vim.opt.autocomplete = true
-vim.opt.completeopt = 'popup'
-
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.o.mouse = 'a'
 
@@ -41,11 +37,7 @@ vim.opt.autoindent = true     -- Copy indent from current line on new line
 -- Make line breaks more intuitive
 vim.opt.breakindent = true
 
--- Optional: Filetype-specific defaults (useful without guess-indent)
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "go",
---   command = "setlocal noexpandtab tabstop=4 shiftwidth=4",
--- })
+vim.o.foldlevelstart=99
 
 -- Enable undo/redo changes even after closing and reopening a file
 vim.o.undofile = false

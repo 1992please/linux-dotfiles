@@ -1,17 +1,29 @@
 -- TODO: Don't forget about the auto complete features
 return function()
+  -- Install lsp config plugin
   vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
-  vim.lsp.enable("clangd")
-  vim.lsp.enable('neocmake')
   vim.lsp.enable('pyright')
+  vim.lsp.enable("clangd")
+  --=============================================================
+  -- CMAKE
+  --=============================================================
+  --Enable (broadcasting) snippet capability for completion
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
 
+  vim.lsp.config('neocmake', {
+    capabilities = capabilities,
+  })
+  vim.lsp.enable("neocmake")
+  --=============================================================
+  -- LUA
+  --=============================================================
   vim.lsp.config('lua_ls', {
     on_init = function(client)
       if client.workspace_folders then
         local path = client.workspace_folders[1].name
-        if
-            path ~= vim.fn.stdpath('config')
-            and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
+        if path ~= vim.fn.stdpath('config')
+          and (vim.uv.fs_stat(path .. '/.luarc.json') or vim.uv.fs_stat(path .. '/.luarc.jsonc'))
         then
           return
         end

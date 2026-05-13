@@ -1,27 +1,7 @@
-local function run_build(name, cmd, cwd)
-  local result = vim.system(cmd, { cwd = cwd }):wait()
-  if result.code ~= 0 then
-    local stderr = result.stderr or ''
-    local stdout = result.stdout or ''
-    local output = stderr ~= '' and stderr or stdout
-    if output == '' then output = 'No output from build command.' end
-    vim.notify(('Build failed for %s:\n%s'):format(name, output), vim.log.levels.ERROR)
-  end
-end
-
 return function()
-  vim.api.nvim_create_autocmd('PackChanged', {
-    callback = function(ev)
-      local name = ev.data.spec.name
-      local kind = ev.data.kind
-      if kind ~= 'install' and kind ~= 'update' then return end
-
-      if name == 'telescope-fzf-native.nvim' and vim.fn.executable 'make' == 1 then
-        run_build(name, { 'make' }, ev.data.path)
-        return
-      end
-    end,
-  })
+  if vim.fn.executable 'make' == 1 then
+    require('utils.build').post_plugin_changed('telescope-fzf-native.nvim', { 'make' })
+  end
 
   ---@type (string|vim.pack.Spec)[]
   local telescope_plugins = {
@@ -52,7 +32,6 @@ return function()
   -- Enable Telescope extensions if they are installed
   pcall(require('telescope').load_extension, 'fzf')
   pcall(require('telescope').load_extension, 'ui-select')
-
 
   -- See `:help telescope.builtin`
   local builtin = require 'telescope.builtin'

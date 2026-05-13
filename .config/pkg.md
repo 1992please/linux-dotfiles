@@ -28,6 +28,7 @@ unzip
 zip
 ncdu
 npm
+trash-cli
 # ========================================================
 # Python
 # ========================================================
@@ -51,6 +52,7 @@ vscode-langservers-extracted
 # ========================================================
 flameshot
 thunar
+thunar-archive-plugin
 google-chrome-stable
 localsend
 onlyoffice-desktopeditors
@@ -71,4 +73,3 @@ gcc
 # ========================================================
 nsxiv
 code
-trash-cli

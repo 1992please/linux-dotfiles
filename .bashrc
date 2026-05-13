@@ -106,7 +106,7 @@ alias h='history | grep '
 
 # Search running processes
 alias p='ps aux | grep '
-alias topp='/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
+alias topcpu='/bin/ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 
 # Shutdown/Restart
 alias poweroff='systemctl poweroff'
@@ -116,7 +116,7 @@ alias reboot='systemctl reboot'
 alias thunar='thunar . & disown'
 
 # General aliases
-alias clean-nvim='rm -rf ~/{.cache/nvim/,.local/state/nvim/,.local/share/nvim/}'
+alias clean-nvim='rm -rf ~/{.cache/nvim/,.local/state/nvim/,.local/share/nvim/,.config/nvim/nvim-pack-lock.json}'
 
 # Temp aliases
 alias cd-dev='cd /mnt/work/nader_data/development/'
@@ -125,40 +125,45 @@ alias cd-dev='cd /mnt/work/nader_data/development/'
 #######################################################
 # pkg utilties
 pkg() {
-    local LOG_FILE="$HOME/.config/packages.md"
-    mkdir -p "$(dirname "$LOG_FILE")"
-    touch "$LOG_FILE"
+  local LOG_FILE="$HOME/.config/pkg.md"
+  mkdir -p "$(dirname "$LOG_FILE")"
 
-    case "$1" in
-        install)
-            shift
-            sudo apt install "$@" && {
-                for pkg in "$@"; do
-                    grep -qxF "$pkg" "$LOG_FILE" || echo "$pkg" >> "$LOG_FILE"
-                done
-            }
-            ;;
-        remove)
-            shift
-            sudo apt remove --purge "$@" && {
-                for pkg in "$@"; do
-                    sed -i "/^$pkg$/d" "$LOG_FILE"
-                done
-            }
-            ;;
-        purge)
-            shift
-            sudo apt purge --autoremove "$@" && {
-                for pkg in "$@"; do
-                    sed -i "/^$pkg$/d" "$LOG_FILE"
-                done
-            }
-            ;;
-	list)
-            [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."
-            ;;
-        *)
-            echo "Usage: pkg {install|remove|purge|show-installed} [package...]"
-            ;;
-    esac
+  case "$1" in
+    install)
+      shift
+      sudo apt install "$@" && {
+        for pkg in "$@"; do
+          grep -qxF "$pkg" "$LOG_FILE" || echo "$pkg" >> "$LOG_FILE"
+        done
+      }
+      ;;
+    remove)
+      shift
+      sudo apt purge --autoremove "$@" && {
+        for pkg in "$@"; do
+          sed -i "/^$pkg$/d" "$LOG_FILE"
+        done
+      }
+      ;;
+    update)
+      shift
+      echo "--- Updating System Packages (apt) ---"
+      # Refreshing indexes first, then upgrading with a manual prompt
+      sudo apt update && sudo apt upgrade
+      echo -e "\n--- Updating Node Packages (npm) ---"
+      # npm update is generally interactive/safe
+      sudo npm -g update
+      echo -e "\n--- Updating Homebrew Packages ---"
+      # Brew update is silent, but upgrade will show you what's happening
+      brew update && brew upgrade
+      brew autoremove
+      brew cleanup -s
+      ;;
+    list)
+      [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."
+      ;;
+    *)
+      echo "Usage: pkg {install|remove|update|list} [package...]"
+      ;;
+  esac
 }
