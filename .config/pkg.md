@@ -44,20 +44,8 @@ xclip
 tree-sitter-cli
 fd-find
 neocmakelsp
-clangd
 lua-language-server
 vscode-langservers-extracted
-# ========================================================
-# Quality of life
-# ========================================================
-flameshot
-thunar
-thunar-archive-plugin
-google-chrome-stable
-localsend
-onlyoffice-desktopeditors
-meld
-libxapp-gtk3-module
 # ========================================================
 # Build
 # ========================================================
@@ -69,7 +57,27 @@ curl
 make
 gcc
 # ========================================================
+# Vulkan Development
+# ========================================================
+qt6-base-dev
+libvulkan-dev
+vulkan-tools
+vulkan-validationlayers
+spirv-tools
+glslc
+# ========================================================
+# Quality of life
+# ========================================================
+flameshot
+thunar
+thunar-archive-plugin
+google-chrome-stable
+localsend
+onlyoffice-desktopeditors
+meld
+libxapp-gtk3-module
+code
+# ========================================================
 # Misc
 # ========================================================
 nsxiv
-code

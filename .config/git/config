@@ -14,3 +14,5 @@
 	directory = /mnt/work/nader_data/development/*
 [core]
 	autocrlf = input
+[init]
+	defaultBranch = main

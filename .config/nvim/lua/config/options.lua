@@ -79,6 +79,9 @@ vim.o.confirm = true
 -- Automatically update the buffer when nvim detects a change in the disk
 vim.o.autoread = true
 
+-- This tells Neovim to look for and execute project-specific configuration files
+vim.o.exrc = true
+
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {
