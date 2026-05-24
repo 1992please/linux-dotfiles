@@ -82,6 +82,7 @@ vim.o.autoread = true
 -- This tells Neovim to look for and execute project-specific configuration files
 vim.o.exrc = true
 
+vim.diagnostic.enable(false)
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
 vim.diagnostic.config {

@@ -54,9 +54,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
-# Homebrew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-
 # Ignore case on auto-completion
 # Note: bind used instead of sticking these in .inputrc
 if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
@@ -153,11 +150,6 @@ pkg() {
       echo -e "\n--- Updating Node Packages (npm) ---"
       # npm update is generally interactive/safe
       sudo npm -g update
-      echo -e "\n--- Updating Homebrew Packages ---"
-      # Brew update is silent, but upgrade will show you what's happening
-      brew update && brew upgrade
-      brew autoremove
-      brew cleanup -s
       ;;
     list)
       [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."

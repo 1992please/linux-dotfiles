@@ -43,9 +43,6 @@ ripgrep
 xclip
 tree-sitter-cli
 fd-find
-neocmakelsp
-lua-language-server
-vscode-langservers-extracted
 # ========================================================
 # Build
 # ========================================================
@@ -59,12 +56,14 @@ gcc
 # ========================================================
 # Vulkan Development
 # ========================================================
-qt6-base-dev
 libvulkan-dev
 vulkan-tools
 vulkan-validationlayers
 spirv-tools
 glslc
+libwayland-dev
+libxkbcommon-dev
+xorg-dev
 # ========================================================
 # Quality of life
 # ========================================================
