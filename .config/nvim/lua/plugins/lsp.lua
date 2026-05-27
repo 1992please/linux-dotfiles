@@ -2,7 +2,7 @@
 return function()
   -- Servers to install
   -- pyright clangd glsl_analyzer neocmake lua-language-server
-  -- Install lsp config plugin
+  -- codelldb
   vim.pack.add { 'https://github.com/mason-org/mason.nvim' }
   require("mason").setup()
 

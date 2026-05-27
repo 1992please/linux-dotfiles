@@ -27,7 +27,7 @@ return function()
   dap.configurations.rust = dap.configurations.cpp
 
   vim.keymap.set('n', '<F9>', function() dap.continue() end, { desc = "Start/Continue Debugging" })
-  vim.keymap.set('n', '<F8>', function() dap.terminate() end, { desc = "Stop Debugging" })
+  vim.keymap.set('n', '<Pause>', function() dap.terminate() end, { desc = "Stop Debugging" })
   vim.keymap.set('n', '<F10>', function() dap.step_over() end, { desc = "Step Over" })
   vim.keymap.set('n', '<F11>', function() dap.step_into() end, { desc = "Step Into" })
   vim.keymap.set('n', '<F12>', function() dap.step_out() end, { desc = "Step Out" })

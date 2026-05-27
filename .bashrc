@@ -24,7 +24,7 @@ fi
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export MANPAGER="nvim +Man!"
+# export MANPAGER="nvim +Man!"
 
 # Disable the bell
 if [[ $iatest -gt 0 ]]; then bind "set bell-style none"; fi
