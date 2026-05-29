@@ -117,6 +117,7 @@ alias clean-nvim='rm -rf ~/{.cache/nvim/,.local/state/nvim/,.local/share/nvim/,.
 
 # Temp aliases
 alias cd-dev='cd /mnt/work/nader_data/development/'
+alias cd-arch='cd /mnt/work/nader_data/archive/personal/'
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################

@@ -21,6 +21,10 @@ return function()
 
   -- c++
   vim.lsp.config('clangd', {
+    cmd = {
+      'clangd',
+      '--header-insertion=never',
+    },
     capabilities = capabilities,
   })
   vim.lsp.enable('clangd')
