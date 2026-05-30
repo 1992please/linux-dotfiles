@@ -8,15 +8,7 @@ return function()
 
   vim.pack.add { 'https://github.com/neovim/nvim-lspconfig' }
 
-  --Enable (broadcasting) snippet capability for completion
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-
   -- python
-  vim.lsp.config('pyright', {
-    capabilities = capabilities,
-  })
   vim.lsp.enable('pyright')
 
   -- c++
@@ -25,7 +17,6 @@ return function()
       'clangd',
       '--header-insertion=never',
     },
-    capabilities = capabilities,
   })
   vim.lsp.enable('clangd')
   vim.api.nvim_create_autocmd('LspAttach', {
@@ -50,20 +41,13 @@ return function()
   })
 
   -- glsl
-  vim.lsp.config('glsl_analyzer', {
-    capabilities = capabilities,
-  })
   vim.lsp.enable('glsl_analyzer')
 
   -- cmake
-  vim.lsp.config('neocmake', {
-    capabilities = capabilities,
-  })
   vim.lsp.enable("neocmake")
 
   -- lua
   vim.lsp.config('lua_ls', {
-    capabilities = capabilities,
     on_init = function(client)
       if client.workspace_folders then
         local path = client.workspace_folders[1].name
