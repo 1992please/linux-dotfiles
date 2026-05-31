@@ -82,6 +82,10 @@ vim.o.autoread = true
 -- This tells Neovim to look for and execute project-specific configuration files
 vim.o.exrc = true
 
+-- using ripgrep instead of legacy grep
+vim.o.grepprg = "rg --vimgrep --smart-case"
+vim.o.grepformat = "%f:%l:%c:%m"
+
 vim.diagnostic.enable(false)
 -- Diagnostic Config & Keymaps
 -- See :help vim.diagnostic.Opts
