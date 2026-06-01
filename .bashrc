@@ -115,9 +115,6 @@ alias thunar='thunar . & disown'
 # General aliases
 alias clean-nvim='rm -rf ~/{.cache/nvim/,.local/state/nvim/,.local/share/nvim/,.config/nvim/nvim-pack-lock.json}'
 
-# Temp aliases
-alias cd-dev='cd /mnt/work/nader_data/development/'
-alias cd-arch='cd /mnt/work/nader_data/archive/personal/'
 #######################################################
 # SPECIAL FUNCTIONS
 #######################################################
@@ -160,3 +157,9 @@ pkg() {
       ;;
   esac
 }
+
+# Temp aliases/exports/sources
+alias cd-dev='cd /mnt/work/nader_data/development/'
+alias cd-arch='cd /mnt/work/nader_data/archive/personal/'
+source /opt/vulkansdk/default/setup-env.sh
+

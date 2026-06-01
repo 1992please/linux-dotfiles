@@ -54,13 +54,8 @@ curl
 make
 gcc
 # ========================================================
-# Vulkan Development
+# Window & Display System Dependencies (Required for Vulkan WSI)
 # ========================================================
-libvulkan-dev
-vulkan-tools
-vulkan-validationlayers
-spirv-tools
-glslc
 libwayland-dev
 libxkbcommon-dev
 xorg-dev
