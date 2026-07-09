@@ -2,6 +2,7 @@ set $mod Mod4
 set $font JetBrainsMono Nerd Font Propo
 set $font_size 12
 
+# Gruvbox Theme
 set $bg           #282828
 set $fg           #d4be98
 set $black        #5a524c
@@ -188,13 +189,16 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# --- Window Borders ---
-# class                 border  backgr. text    indicator child_border
-client.focused          $blue   $blue   $bg     $blue     $blue
-client.focused_inactive $black  $black  $fg     $black    $black
-client.unfocused        $bg     $bg     $fg     $bg       $bg
-client.urgent           $red    $red    $bg     $red      $red
+# --- Window Borders & Tabs ---
+# class                 border    backgr.   text      indicator child_border
+client.focused          $blue     $blue     $bg       $blue      $blue
+client.focused_inactive $black    $black    $fg       $black     $black
+client.unfocused        $black    $bg       $fg       $bg        $bg
+client.urgent           $red      $red      $bg       $red       $red
 
+# --- Layout Cleansing ---
+title_align center
+hide_edge_borders smart
 # Disable window titlebars completely. Rely on borders to show focus.
 default_border pixel 2
 default_floating_border pixel 2
@@ -216,5 +220,5 @@ exec --no-startup-id alacritty --class scratchpad
 # Automatically move the window to the scratchpad when it opens
 for_window [instance="scratchpad"] move scratchpad
 
-for_window [class="Meld"] floating enable
+# for_window [class="Meld"] floating enable
 

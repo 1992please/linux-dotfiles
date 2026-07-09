@@ -7,19 +7,21 @@ iatest=$(expr index "$-" i)
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # Enable bash programmable completion features in interactive shells
 if [ -f /usr/share/bash-completion/bash_completion ]; then
-	. /usr/share/bash-completion/bash_completion
+  . /usr/share/bash-completion/bash_completion
 elif [ -f /etc/bash_completion ]; then
-	. /etc/bash_completion
+  . /etc/bash_completion
 fi
 
 #######################################################
 # EXPORTS
 #######################################################
+# add ~/.local/bin/ to the path
+export PATH="$HOME/.local/bin:$PATH"
 
 export TERMINAL="alacritty"
 export EDITOR="nvim"
@@ -162,4 +164,3 @@ pkg() {
 alias cd-dev='cd /mnt/work/nader_data/development/'
 alias cd-arch='cd /mnt/work/nader_data/archive/personal/'
 source /opt/vulkansdk/default/setup-env.sh
-
