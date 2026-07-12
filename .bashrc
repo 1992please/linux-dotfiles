@@ -145,11 +145,9 @@ pkg() {
     update)
       shift
       echo "--- Updating System Packages (apt) ---"
-      # Refreshing indexes first, then upgrading with a manual prompt
       sudo apt update && sudo apt upgrade
-      echo -e "\n--- Updating Node Packages (npm) ---"
-      # npm update is generally interactive/safe
-      sudo npm -g update
+      # echo -e "\n--- Updating Node Packages (npm) ---"
+      # sudo npm -g update
       ;;
     list)
       [ -s "$LOG_FILE" ] && cat "$LOG_FILE" || echo "Log is empty."
