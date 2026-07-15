@@ -2,15 +2,6 @@ set $mod Mod4
 set $font JetBrainsMono Nerd Font Propo
 set $font_size 12
 
-# Gruvbox Theme
-set $bg           #282828
-set $fg           #d4be98
-set $black        #5a524c
-set $red          #ea6962
-set $blue         #7daea3
-set $green        #a9b665
-set $yellow       #d8a657
-
 set $wallpaper ~/.config/wallpaper.png
 
 font pango:$font $font_size
@@ -189,26 +180,39 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+set $bg #282828
+set $fg #ebdbb2
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d6a
+set $orange #d65d0e
+set $black #5a524c
+
 # --- Window Borders & Tabs ---
-# class                 border    backgr.   text      indicator child_border
-client.focused          $blue     $blue     $bg       $blue      $blue
-client.focused_inactive $black    $black    $fg       $black     $black
-client.unfocused        $black    $bg       $fg       $bg        $bg
-client.urgent           $red      $red      $bg       $red       $red
+# class                 border        backgr.       text          indicator     child_border
+client.focused          $yellow       $yellow       $bg           $yellow       $yellow
+client.focused_inactive $blue         $blue         $fg           $blue         $blue
+client.unfocused        $black        $bg           $fg           $bg           $black
+client.urgent           $red          $red          $bg           $red          $red
+
+bindsym $mod+d exec --no-startup-id dmenu_run -fn '$font:size=$font_size' -nb '$bg' -nf '$fg' -sb '$yellow' -sf '$bg'
 
 # --- Layout Cleansing ---
 title_align center
 hide_edge_borders smart
+
 # Disable window titlebars completely. Rely on borders to show focus.
-default_border pixel 2
-default_floating_border pixel 2
+default_border pixel 1
+default_floating_border pixel 1
 
 # Add slight gaps between windows for visual breathing room
 # gaps inner 8
 # gaps outer 0
 # smart_gaps on
 
-bindsym $mod+d exec --no-startup-id dmenu_run -fn '$font:size=$font_size' -nb '$bg' -nf '$fg' -sb '$blue' -sf '$bg'
 
 # --- Scratchpad ---
 # Make the currently focused window a scratchpad

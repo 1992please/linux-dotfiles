@@ -44,7 +44,7 @@ xclip
 tree-sitter-cli
 fd-find
 # ========================================================
-# Build
+# Build / Development
 # ========================================================
 build-essential
 ninja-build
@@ -53,6 +53,7 @@ cmake
 curl
 make
 gcc
+gdb
 # ========================================================
 # Window & Display System Dependencies (Required for Vulkan WSI)
 # ========================================================
