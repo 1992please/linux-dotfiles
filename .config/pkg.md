@@ -2,6 +2,7 @@
 # Essential
 # ========================================================
 xorg
+nvidia-driver
 i3
 polybar
 lightdm
@@ -13,6 +14,8 @@ pipewire-audio
 pavucontrol
 alsa-tools-gui
 playerctl
+cryptsetup
+systemd-cryptsetup
 # ========================================================
 # Themes and fonts
 # ========================================================
@@ -29,6 +32,7 @@ zip
 ncdu
 npm
 trash-cli
+git-lfs
 # ========================================================
 # Python
 # ========================================================
