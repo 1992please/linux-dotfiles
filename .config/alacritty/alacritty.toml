@@ -5,6 +5,7 @@ import = ["gruvbox.toml"]
 [keyboard]
 bindings = [
     { key = "N", mods = "Control|Shift", action = "CreateNewWindow" },
+    { key = "Return", mods = "Shift", chars = "\u001B\r" },
 ]
 
 [font]
