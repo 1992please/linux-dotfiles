@@ -4,7 +4,8 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "python3 \"$HOME/.claude/statusline-command.py\""
+    "command": "python3 \"$HOME/.claude/statusline-command.py\"",
+    "refreshInterval": 60
   },
   "modelSettings": {
     "claude-opus-5-5": {
@@ -12,5 +13,6 @@
     }
   },
   "theme": "dark",
-  "verbose": false
+  "verbose": false,
+  "model": "opus"
 }
