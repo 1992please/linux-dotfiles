@@ -161,4 +161,6 @@ pkg() {
 # Temp aliases/exports/sources
 alias cd-dev='cd /mnt/work/nader_data/development/'
 alias cd-arch='cd /mnt/work/nader_data/archive/personal/'
-source /opt/vulkansdk/default/setup-env.sh
+if [ -f /opt/vulkansdk/default/setup-env.sh ]; then
+  source /opt/vulkansdk/default/setup-env.sh
+fi
