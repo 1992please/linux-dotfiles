@@ -19,3 +19,9 @@ size = 12.0
 # padding = { x = 10, y = 10 }
 # dynamic_padding = true
 # opacity = 0.95
+
+[terminal]
+# Claude Code copies via xclip and also sends OSC 52; both racing for the
+# CLIPBOARD selection made Alacritty warn "Unable to store text in clipboard".
+# Local apps use xclip directly. Set back to "OnlyCopy" if you need OSC 52 over SSH.
+osc52 = "Disabled"

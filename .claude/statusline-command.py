@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Claude Code status line: model + effort / project:git branch status / 5-hour usage / weekly (7d) usage / context window usage / cold prompt cache flag.
+"""Claude Code status line: model + effort / project:git branch status / 5-hour usage / weekly (7d) usage / context window usage.
 
 Reads the status line JSON from stdin. Does not require jq. Missing fields never
 raise an error: before the first API response the usage segments are shown as
@@ -147,16 +147,6 @@ def project_name(data):
     return None
 
 
-def cache_cold(data):
-    """"cache cold: <cause>" when the prompt cache is known to work but is cold right now, else None."""
-    # Compare with is True / is False: a missing field is None and must not count as cold.
-    if get(data, "prompt_cache", "caching_observed") is True and get(data, "prompt_cache", "warm") is False:
-        causes = get(data, "prompt_cache", "last_miss_cause", "causes")
-        cause = causes[0] if isinstance(causes, list) and causes and isinstance(causes[0], str) else "unknown"
-        return colored("cache cold: %s" % cause, YELLOW)
-    return None
-
-
 def main():
     sys.stdout.reconfigure(encoding="utf-8")  # the git segment uses non-ASCII arrows regardless of the locale
     try:
@@ -192,9 +182,6 @@ def main():
     parts = [part for part in (head, location) if part]
     parts += limits
     parts.append(render("ctx", context))
-    cold = cache_cold(data)
-    if cold:
-        parts.append(cold)
     sys.stdout.write(sep.join(parts))
 
 

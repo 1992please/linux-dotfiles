@@ -72,7 +72,7 @@ thunar
 thunar-archive-plugin
 google-chrome-stable
 localsend
-onlyoffice-desktopeditors
+libreoffice
 meld
 libxapp-gtk3-module
 code
